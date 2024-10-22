@@ -1,9 +1,12 @@
-package example.baseproject.user.repository;
+package example.baseproject.module.user.repository;
 
-import example.baseproject.user.model.User;
+import example.baseproject.module.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
 }

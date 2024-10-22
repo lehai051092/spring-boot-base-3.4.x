@@ -1,0 +1,19 @@
+### AUTH signup
+POST http://localhost:8080/auth/signup
+Content-Type: application/json
+
+{
+  "email": "hailt@gmail.com",
+  "fullName": "HaiLT",
+  "password": "Aa@123456"
+}
+
+### AUTH login
+POST localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "hailt@gmail.com",
+  "password": "Aa@123456"
+}
+###

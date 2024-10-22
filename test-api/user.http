@@ -1,0 +1,9 @@
+### GET all users
+GET http://localhost:8080/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYWlsdEBnbWFpbC5jb20iLCJpYXQiOjE3Mjk3MzYwOTMsImV4cCI6MTcyOTczOTY5M30.6HOAf6dtJuSi1su5KKO87T7ecMaJtKo8nfyo7zD909s
+
+### GET profile user
+GET http://localhost:8080/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYWlsdEBnbWFpbC5jb20iLCJpYXQiOjE3Mjk3MzYwOTMsImV4cCI6MTcyOTczOTY5M30.6HOAf6dtJuSi1su5KKO87T7ecMaJtKo8nfyo7zD909s
+
+###
