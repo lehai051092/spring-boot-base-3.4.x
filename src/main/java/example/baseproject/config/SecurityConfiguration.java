@@ -15,6 +15,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
+import static example.baseproject.shared.constant.HeaderConstant.*;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
@@ -49,7 +51,7 @@ public class SecurityConfiguration {
 
         configuration.setAllowedOrigins(List.of("*"));
         configuration.setAllowedMethods(List.of("*"));
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        configuration.setAllowedHeaders(List.of(AUTHORIZATION, CONTENT_TYPE));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 

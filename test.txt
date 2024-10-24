@@ -1,0 +1,8 @@
+statusCode: int
+message: string
+data?: object
+error?: {
+    message: string
+    field: string or null
+    help: object
+}

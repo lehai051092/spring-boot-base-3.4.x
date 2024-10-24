@@ -6,11 +6,15 @@ import example.baseproject.module.auth.service.AuthenticationService;
 import example.baseproject.module.auth.service.JwtService;
 import example.baseproject.module.user.dto.RegisterUserDto;
 import example.baseproject.module.user.model.User;
+import example.baseproject.shared.response.SuccessResponse;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static example.baseproject.shared.constant.StatusCodeConstant.SUCCESS;
 
 @RequestMapping("/auth")
 @RestController
@@ -25,14 +29,14 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
+    public ResponseEntity<SuccessResponse> register(@Valid @RequestBody RegisterUserDto registerUserDto) {
         User registeredUser = authenticationService.signup(registerUserDto);
 
-        return ResponseEntity.ok(registeredUser);
+        return ResponseEntity.ok(new SuccessResponse(SUCCESS, "Registration successful", registeredUser));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserDto loginUserDto) {
+    public ResponseEntity<SuccessResponse> authenticate(@Valid @RequestBody LoginUserDto loginUserDto) {
         User authenticatedUser = authenticationService.authenticate(loginUserDto);
 
         String jwtToken = jwtService.generateToken(authenticatedUser);
@@ -41,6 +45,6 @@ public class AuthController {
         loginResponse.setToken(jwtToken);
         loginResponse.setExpiresIn(jwtService.getExpirationTime());
 
-        return ResponseEntity.ok(loginResponse);
+        return ResponseEntity.ok(new SuccessResponse(SUCCESS, "Login successful", loginResponse));
     }
 }
