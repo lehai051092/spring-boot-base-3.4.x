@@ -1,9 +1,9 @@
 ### GET all users
-GET http://localhost:8080/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYWlsdEBnbWFpbC5jb20iLCJpYXQiOjE3Mjk3MzYwOTMsImV4cCI6MTcyOTczOTY5M30.6HOAf6dtJuSi1su5KKO87T7ecMaJtKo8nfyo7zD909s
+GET http://localhost:8080/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYWlsdEBnbWFpbC5jb20iLCJpYXQiOjE3Mjk3NTg4NDAsImV4cCI6MTcyOTc2MjQ0MH0.FPQXJzrtrDufIGhPzo4eAzgg_BG5Ai-DSLVxYcixQoY
 
 ### GET profile user
-GET http://localhost:8080/users/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYWlsdEBnbWFpbC5jb20iLCJpYXQiOjE3Mjk3MzYwOTMsImV4cCI6MTcyOTczOTY5M30.6HOAf6dtJuSi1su5KKO87T7ecMaJtKo8nfyo7zD909s
+GET http://localhost:8080/api/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYWlsdEBnbWFpbC5jb20iLCJpYXQiOjE3Mjk3NTg4NDAsImV4cCI6MTcyOTc2MjQ0MH0.FPQXJzrtrDufIGhPzo4eAzgg_BG5Ai-DSLVxYcixQoY
 
 ###

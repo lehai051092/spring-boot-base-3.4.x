@@ -4,6 +4,8 @@ import example.baseproject.module.auth.dto.LoginUserDto;
 import example.baseproject.module.user.dto.RegisterUserDto;
 import example.baseproject.module.user.model.User;
 import example.baseproject.module.user.repository.UserRepository;
+import example.baseproject.module.user.response.UserResponse;
+import example.baseproject.module.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,24 +20,28 @@ public class AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
+    private final UserService userService;
+
     @Autowired
     public AuthenticationService(
             UserRepository userRepository,
             AuthenticationManager authenticationManager,
-            PasswordEncoder passwordEncoder
+            PasswordEncoder passwordEncoder,
+            UserService userService
     ) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userService = userService;
     }
 
-    public User signup(RegisterUserDto input) {
+    public UserResponse signup(RegisterUserDto input) {
         User user = new User();
         user.setFullName(input.getFullName());
         user.setEmail(input.getEmail());
         user.setPassword(passwordEncoder.encode(input.getPassword()));
 
-        return userRepository.save(user);
+        return this.userService.convertUserResponse(userRepository.save(user));
     }
 
     public User authenticate(LoginUserDto input) {
