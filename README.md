@@ -10,7 +10,7 @@ http://localhost:8080/swagger-ui/index.html
 - [x] Error Handling & Exception Management
 - [x] Validation (Request Parameters, DTO, Query)
 - [x] API Documentation (Swagger Integration)
-- [ ] Caching (Redis)
+- [x] Caching (Redis)
 - [ ] Logger (Morgan & Winston)
 - [ ] Docker Setup
 - [ ] Unit Test & Integration Test (JUnit, Mockito)

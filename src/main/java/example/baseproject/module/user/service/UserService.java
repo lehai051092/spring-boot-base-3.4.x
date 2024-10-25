@@ -4,6 +4,7 @@ import example.baseproject.module.user.model.User;
 import example.baseproject.module.user.repository.UserRepository;
 import example.baseproject.module.user.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    @Cacheable(value = "allUsers")
     public List<UserResponse> allUsers() {
         return this.convertListUserResponse(new ArrayList<>(userRepository.findAll()));
     }
@@ -36,5 +38,12 @@ public class UserService {
                 user.getCreatedAt(),
                 user.getUpdatedAt()
         );
+    }
+
+    @Cacheable(value = "users", key = "#userId")
+    public UserResponse getUserById(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+
+        return this.convertUserResponse(user);
     }
 }
