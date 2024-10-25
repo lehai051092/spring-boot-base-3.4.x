@@ -11,7 +11,7 @@ http://localhost:8080/swagger-ui/index.html
 - [x] Validation (Request Parameters, DTO, Query)
 - [x] API Documentation (Swagger Integration)
 - [x] Caching (Redis)
-- [ ] Logger (Morgan & Winston)
+- [x] Logger (SLF4J & Logback)
 - [ ] Docker Setup
 - [ ] Unit Test & Integration Test (JUnit, Mockito)
 - [ ] Forget Password Feature

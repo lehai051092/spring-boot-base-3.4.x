@@ -3,6 +3,8 @@ package example.baseproject.module.user.service;
 import example.baseproject.module.user.model.User;
 import example.baseproject.module.user.repository.UserRepository;
 import example.baseproject.module.user.response.UserResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,9 @@ import java.util.List;
 
 @Service
 public class UserService {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
     private final UserRepository userRepository;
 
     @Autowired
@@ -42,7 +47,11 @@ public class UserService {
 
     @Cacheable(value = "users", key = "#userId")
     public UserResponse getUserById(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        logger.info("Fetching user with ID: {}", userId);
+        User user = userRepository.findById(userId).orElseThrow(() -> {
+            logger.error("User not found with ID: {}", userId);
+            return new RuntimeException("User not found");
+        });
 
         return this.convertUserResponse(user);
     }

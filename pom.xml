@@ -33,6 +33,7 @@
         <liquibase.version>4.29.2</liquibase.version>
         <jwt.version>0.12.6</jwt.version>
         <openapi.version>2.6.0</openapi.version>
+        <logback.version>1.5.11</logback.version>
     </properties>
     <dependencies>
         <dependency>
@@ -119,6 +120,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-logging -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
