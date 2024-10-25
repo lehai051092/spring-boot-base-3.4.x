@@ -22,7 +22,7 @@ http://localhost:8080/swagger-ui/index.html
 - [x] Caching (Redis)
 - [x] Logger (SLF4J & Logback)
 - [x] Docker Setup
-- [ ] Unit Test & Integration Test (JUnit, Mockito)
+- [x] Unit Test & Integration Test (JUnit, Mockito)
 - [ ] Forget Password Feature
 - [ ] Multi-language Support (i18n)
 - [ ] CI/CD Integration

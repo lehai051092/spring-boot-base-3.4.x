@@ -65,10 +65,13 @@ public class UserController {
     )
     public ResponseEntity<SuccessResponse<UserResponse>> authenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
-        UserResponse userResponse = this.userService.convertUserResponse(currentUser);
 
-        return ResponseEntity.ok(new SuccessResponse<>(SUCCESS, "Get user successful", userResponse));
+        if (authentication.getPrincipal() instanceof User currentUser) {
+            UserResponse userResponse = this.userService.convertUserResponse(currentUser);
+            return ResponseEntity.ok(new SuccessResponse<>(SUCCESS, "Get user successful", userResponse));
+        }
+
+        return null;
     }
 
     @GetMapping

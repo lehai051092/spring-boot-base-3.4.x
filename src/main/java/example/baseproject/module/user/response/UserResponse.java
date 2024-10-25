@@ -3,6 +3,7 @@ package example.baseproject.module.user.response;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -15,11 +16,11 @@ public class UserResponse {
 
     private String fullName;
 
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
-    public UserResponse(Long id, String email, String fullName, Date createdAt, Date updatedAt) {
+    public UserResponse(Long id, String email, String fullName, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.email = email;
         this.fullName = fullName;
