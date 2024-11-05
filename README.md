@@ -23,7 +23,7 @@ http://localhost:8080/swagger-ui/index.html
 - [x] Logger (SLF4J & Logback)
 - [x] Docker Setup
 - [x] Unit Test & Integration Test (JUnit, Mockito)
-- [ ] Forget Password Feature
+- [x] Forget Password Feature
 - [ ] Multi-language Support (i18n)
 - [ ] CI/CD Integration
 - [ ] Role-Based Access Control (RBAC)

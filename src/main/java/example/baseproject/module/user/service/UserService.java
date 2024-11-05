@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,9 +20,12 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Cacheable(value = "allUsers")
@@ -52,6 +56,23 @@ public class UserService {
             logger.error("User not found with ID: {}", userId);
             return new RuntimeException("User not found");
         });
+
+        return this.convertUserResponse(user);
+    }
+
+    public User findUserByEmail(String email) {
+        logger.info("Fetching user with email: {}", email);
+
+        return userRepository.findByEmail(email).orElseThrow(() -> {
+            logger.error("User not found with email: {}", email);
+            return new RuntimeException("User not found");
+        });
+    }
+
+    public UserResponse updatePasswordByEmail(String email) {
+        User user = this.findUserByEmail(email);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
 
         return this.convertUserResponse(user);
     }
